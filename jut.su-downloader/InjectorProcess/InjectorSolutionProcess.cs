@@ -24,7 +24,7 @@ namespace jut.su_downloader.InjectorProcess
                 "Command"
             }, true);
             Injector.Add<IDownloaderLogic, Jut_su_Logic>(null,true);
-            Injector.Add<MainWindowVM, MainWindowVM>(null, false);
+            Injector.Add<MainWindowVM, MainWindowVM>(null, true);
 
             //
 
