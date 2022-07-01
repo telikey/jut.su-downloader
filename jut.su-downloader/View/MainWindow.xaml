@@ -11,6 +11,6 @@
         <commandConverter:StringToCommandConverter x:Key="StringToCommandConverter"></commandConverter:StringToCommandConverter>
     </Window.Resources>
     <Grid>
-        <Button Command="{Binding Converter={StaticResource StringToCommandConverter}, ConverterParameter='button1_Command'}"></Button>
+        <Button Command="{Binding MainWindowCommands, Converter={StaticResource StringToCommandConverter}, ConverterParameter='button1_Command'}"></Button>
     </Grid>
 </Window>

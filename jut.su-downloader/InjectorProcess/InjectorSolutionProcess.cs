@@ -16,17 +16,20 @@ namespace jut.su_downloader.InjectorProcess
     {
         public static void Fill()
         {
-            //MainWindowVM
-            Injector.Add<AllCommands, AllCommands>(null, true);
-            Injector.Add<ICommandLogic<ICommand>, CommandLogic<ICommand>>(new object[]
-            {
-                "Command",
-                "some"
-            }, true);
-            Injector.Add<IDownloaderLogic, Jut_su_Logic>(null,true);
-            Injector.Add<MainWindowVM, MainWindowVM>(null, true);
+            //Commands
+            Injector.Add<MainWindowCommands, MainWindowCommands>(null, true);
 
-            //
+            //CommandLogic
+            Injector.Add<ICommandLogic<ICommand,MainWindowCommands>, CommandLogic<ICommand,MainWindowCommands>>(new object[]
+            {
+                "Command"
+            }, true);
+
+            //DownloaderLogic
+            Injector.Add<IDownloaderLogic, Jut_su_Logic>(null, true);
+
+            //MainWindowVM
+            Injector.Add<MainWindowVM, MainWindowVM>(null, true);
 
         }
     }

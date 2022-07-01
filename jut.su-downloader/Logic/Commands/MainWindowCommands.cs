@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace WPFCommands
 {
-    public class AllCommands: IFromObjectForCommandLogic
+    public class MainWindowCommands: IFromObjectForCommandLogic
     {
         [GetCommandMethod]
         private ICommand button1_Command()
