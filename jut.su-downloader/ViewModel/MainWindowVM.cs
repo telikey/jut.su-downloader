@@ -1,4 +1,5 @@
 ﻿using jut.su_downloader.Logic;
+using jut.su_downloader.Logic.Downloader;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace jut.su_downloader.ViewModel
     {
         private IDownloaderLogic _iDownloaderLogic =null;
 
-        public MainWindowVM(IDownloaderLogic IDownloaderLogic)
+        public MainWindowVM(IDownloaderLogic IDownloaderLogic,bool flag)
         {
             this._iDownloaderLogic = IDownloaderLogic;
         }

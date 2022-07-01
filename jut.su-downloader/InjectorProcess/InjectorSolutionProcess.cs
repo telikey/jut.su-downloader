@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassInjector;
+using jut.su_downloader.Logic.Downloader;
 
 namespace jut.su_downloader.InjectorProcess
 {
@@ -13,10 +14,8 @@ namespace jut.su_downloader.InjectorProcess
     {
         public static void Fill()
         {
-            //Injector.Add<IDownloaderLogic, Jut_su_Logic>(null,true);
-            //Injector.Add<MainWindowVM, MainWindowVM>(null,false);
-
-            Injector.Add<MainWindowVM, MainWindowVM>(new[] {new Jut_su_Logic()}, false);
+            Injector.Add<IDownloaderLogic, Jut_su_Logic>(null,true);
+            Injector.Add<MainWindowVM, MainWindowVM>(null, false);
 
         }
     }
