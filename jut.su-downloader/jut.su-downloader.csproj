@@ -10,12 +10,17 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\classInjector\ClassInjector\ClassInjector.csproj" />
+    <ProjectReference Include="..\..\WPFCommands\WPFCommands\WPFCommands.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Page Update="View\MainWindow.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Exeption\" />
   </ItemGroup>
 
 </Project>

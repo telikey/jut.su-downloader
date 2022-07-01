@@ -12,7 +12,7 @@ namespace jut.su_downloader.ViewModel
     {
         private IDownloaderLogic _iDownloaderLogic =null;
 
-        public MainWindowVM(IDownloaderLogic IDownloaderLogic,bool flag)
+        public MainWindowVM(IDownloaderLogic IDownloaderLogic)
         {
             this._iDownloaderLogic = IDownloaderLogic;
         }

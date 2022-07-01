@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jut.su-downloader", "jut.su
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassInjector", "..\classInjector\ClassInjector\ClassInjector.csproj", "{86206959-AC5D-43A7-99F6-7704586C30AC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFCommands", "..\WPFCommands\WPFCommands\WPFCommands.csproj", "{7C499D4E-C1FB-4C6D-AB3D-D0B550B24D8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{86206959-AC5D-43A7-99F6-7704586C30AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86206959-AC5D-43A7-99F6-7704586C30AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86206959-AC5D-43A7-99F6-7704586C30AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C499D4E-C1FB-4C6D-AB3D-D0B550B24D8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C499D4E-C1FB-4C6D-AB3D-D0B550B24D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C499D4E-C1FB-4C6D-AB3D-D0B550B24D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C499D4E-C1FB-4C6D-AB3D-D0B550B24D8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
