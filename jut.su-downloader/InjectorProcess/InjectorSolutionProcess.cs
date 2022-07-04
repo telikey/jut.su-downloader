@@ -9,6 +9,9 @@ using ClassInjector;
 using jut.su_downloader.Logic.Downloader;
 using WPFCommands;
 using System.Windows.Input;
+using JSONPacker;
+using jut.su_downloader.Model.ModelRepository.Repositories;
+using jut.su_downloader.Model.ModelRepository.Items;
 
 namespace jut.su_downloader.InjectorProcess
 {
@@ -27,6 +30,24 @@ namespace jut.su_downloader.InjectorProcess
 
             //DownloaderLogic
             Injector.Add<IDownloaderLogic, Jut_su_Logic>(null, true);
+
+            //JsonPacker
+            Injector.Add<IJsonPackerLogic, JsonPackerLogic>(new object[]
+            {
+                "_",
+                ""
+            }, true);
+
+            //Repositories
+            Injector.Add<IItemRepository<AnimeItem>,AnimeItemsRepository>(new object[]
+            {
+                "C:\\temp\\jut_su_downloader\\AnimeItems.txt"
+            }, true);
+            Injector.Add<IItemRepository<SeasonItem>, SeasonItemsRepository>(new object[]
+{
+                "C:\\temp\\jut_su_downloader\\SeasonItems.txt"
+}, true);
+            Injector.Add<Repositories, Repositories>(null, true);
 
             //MainWindowVM
             Injector.Add<MainWindowVM, MainWindowVM>(null, true);
