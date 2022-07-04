@@ -14,6 +14,6 @@ namespace jut.su_downloader.Model.Dto
 
         public string Path = "";
 
-        public int[] ElementsId = new int[0];
+        public int[] ElementItems = new int[0];
     }
 }

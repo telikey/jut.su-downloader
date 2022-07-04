@@ -11,12 +11,26 @@ namespace jut.su_downloader.Model.ModelRepository.Repositories
     {
         public IItemRepository<AnimeItem> AnimeItemsRepository { get; set; }
         public IItemRepository<SeasonItem> SeasonItemsRepository { get; set; }
+        public IItemRepository<ElementItem> ElementItemsRepository { get; set; }
         public Repositories(
-            IItemRepository<AnimeItem> animeReportsitory,
-            IItemRepository<SeasonItem> seasonRepository)
+            IItemRepository<AnimeItem> animeItemsReportsitory,
+            IItemRepository<SeasonItem> seasonItemsRepository,
+            IItemRepository<ElementItem> elementItemsRepository)
         {
-            this.AnimeItemsRepository = animeReportsitory;
-            this.SeasonItemsRepository = seasonRepository;
+            this.AnimeItemsRepository = animeItemsReportsitory;
+            this.SeasonItemsRepository = seasonItemsRepository;
+            this.ElementItemsRepository = elementItemsRepository;
+
+            this.AnimeItemsRepository.Load();
+            this.ElementItemsRepository.Load();
+            this.SeasonItemsRepository.Load();
+        }
+
+        public void Save()
+        {
+            this.AnimeItemsRepository.Save();
+            this.SeasonItemsRepository.Save();
+            this.ElementItemsRepository.Save();
         }
     }
 }

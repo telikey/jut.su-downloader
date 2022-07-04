@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\AnimeDownloaderLib\AnimeDownloaderLib\AnimeDownloaderLib.csproj" />
     <ProjectReference Include="..\..\classInjector\ClassInjector\ClassInjector.csproj" />
     <ProjectReference Include="..\..\JSONPacker\JSONPacker\JSONPacker.csproj" />
     <ProjectReference Include="..\..\WPFCommands\WPFCommands\WPFCommands.csproj" />

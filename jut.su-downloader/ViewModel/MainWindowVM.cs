@@ -1,10 +1,12 @@
-﻿using JSONPacker;
-using jut.su_downloader.Logic;
-using jut.su_downloader.Logic.Downloader;
+﻿using AnimeDownloaderLib;
+using AnimeDownloaderLib.Model;
+using JSONPacker;
 using jut.su_downloader.Model.Dto;
 using jut.su_downloader.Model.ModelRepository.Items;
+using jut.su_downloader.Model.ModelRepository.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,22 +16,22 @@ namespace jut.su_downloader.ViewModel
 {
     public class MainWindowVM
     {
-        private IDownloaderLogic _iDownloaderLogic =null;
+        private IDownloaderLogic<IAnimeItem> _iDownloaderLogic =null;
         private MainWindowCommands _mainWindowCommands = null;
         public MainWindowCommands MainWindowCommands { get => _mainWindowCommands; }
 
-        public MainWindowVM(IDownloaderLogic IDownloaderLogic,MainWindowCommands commands,IJsonPackerLogic _packerLogic)
+        public MainWindowVM(IDownloaderLogic<IAnimeItem> IDownloaderLogic, MainWindowCommands commands, Repositories repositories)
         {
             this._iDownloaderLogic = IDownloaderLogic;
-            this._mainWindowCommands= commands;
+            this._mainWindowCommands = commands;
 
-            var item = new AnimeItem();
-            item.Title = "some";
-            item.Id = 1;
-            item.Path = "100";
-            var text=_packerLogic.Pack<AnimeItem,AnimeItemDto>(item);
+            _animeItems = new ObservableCollection<IAnimeItem>(repositories.AnimeItemsRepository.GetRange());
 
-            var obj=_packerLogic.UnPack<AnimeItem,AnimeItemDto>(text);
+            this._iDownloaderLogic.Fill(this._animeItems,60);
         }
+
+        private ObservableCollection<IAnimeItem> _animeItems = null;
+        public ObservableCollection<IAnimeItem> AnimeItems { get => _animeItems; }
+
     }
 }

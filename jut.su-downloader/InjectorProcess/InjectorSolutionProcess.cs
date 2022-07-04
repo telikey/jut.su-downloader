@@ -1,17 +1,17 @@
-﻿using jut.su_downloader.Logic;
-using jut.su_downloader.ViewModel;
+﻿using jut.su_downloader.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassInjector;
-using jut.su_downloader.Logic.Downloader;
 using WPFCommands;
 using System.Windows.Input;
 using JSONPacker;
 using jut.su_downloader.Model.ModelRepository.Repositories;
 using jut.su_downloader.Model.ModelRepository.Items;
+using AnimeDownloaderLib;
+using AnimeDownloaderLib.Model;
 
 namespace jut.su_downloader.InjectorProcess
 {
@@ -19,17 +19,22 @@ namespace jut.su_downloader.InjectorProcess
     {
         public static void Fill()
         {
+            //Items
+            Injector.Add<IAnimeItem, AnimeItem>(null, false);
+            Injector.Add<ISeasonItem, SeasonItem>(null, false);
+            Injector.Add<IElementItem, ElementItem>(null, false);
+
             //Commands
             Injector.Add<MainWindowCommands, MainWindowCommands>(null, true);
 
             //CommandLogic
-            Injector.Add<ICommandLogic<ICommand,MainWindowCommands>, CommandLogic<ICommand,MainWindowCommands>>(new object[]
+            Injector.Add<ICommandLogic<ICommand, MainWindowCommands>, CommandLogic<ICommand, MainWindowCommands>>(new object[]
             {
                 "Command"
             }, true);
 
             //DownloaderLogic
-            Injector.Add<IDownloaderLogic, Jut_su_Logic>(null, true);
+            Injector.Add<IDownloaderLogic<IAnimeItem>, Jut_su_Logic>(null, true);
 
             //JsonPacker
             Injector.Add<IJsonPackerLogic, JsonPackerLogic>(new object[]
@@ -39,19 +44,22 @@ namespace jut.su_downloader.InjectorProcess
             }, true);
 
             //Repositories
-            Injector.Add<IItemRepository<AnimeItem>,AnimeItemsRepository>(new object[]
+            Injector.Add<IItemRepository<ElementItem>, ElementItemsRepository>(new object[]
             {
-                "C:\\temp\\jut_su_downloader\\AnimeItems.txt"
+                "C:\\temp\\downloader\\ElementItems.txt"
             }, true);
             Injector.Add<IItemRepository<SeasonItem>, SeasonItemsRepository>(new object[]
-{
-                "C:\\temp\\jut_su_downloader\\SeasonItems.txt"
-}, true);
+            {
+                "C:\\temp\\downloader\\SeasonItems.txt"
+            }, true);
+            Injector.Add<IItemRepository<AnimeItem>, AnimeItemsRepository>(new object[]
+            {
+                "C:\\temp\\downloader\\AnimeItems.txt"
+            }, true);
             Injector.Add<Repositories, Repositories>(null, true);
 
             //MainWindowVM
             Injector.Add<MainWindowVM, MainWindowVM>(null, true);
-
         }
     }
 }
