@@ -64,14 +64,16 @@ namespace jut.su_downloader.Model.ModelRepository.Items
             {
                 _SeasonsItems_Array = value;
                 var repos = (Repositories.Repositories)ClassInjector.Injector.GetObject(typeof(Repositories.Repositories));
-                repos.SeasonItemsRepository.Update(_SeasonsItems_Array.Select(x=>(SeasonItem)x).ToArray());
+                repos.SeasonItemsRepository.Update(_SeasonsItems_Array.Select(x=>(ISeasonItem)x).ToArray());
+                _SeasonsItems = _SeasonsItems_Array.Select(x => x.Id).ToArray();
             }
         }
 
         private void CollectionChangedMethod(object sender, NotifyCollectionChangedEventArgs e)
         {
             var repos = (Repositories.Repositories)ClassInjector.Injector.GetObject(typeof(Repositories.Repositories));
-            repos.SeasonItemsRepository.Update(_SeasonsItems_Array.Select(x=>(SeasonItem)x).ToArray());
+            repos.SeasonItemsRepository.Update(_SeasonsItems_Array.Select(x=>(ISeasonItem)x).ToArray());
+            _SeasonsItems = _SeasonsItems_Array.Select(x => x.Id).ToArray();
         }
 
 

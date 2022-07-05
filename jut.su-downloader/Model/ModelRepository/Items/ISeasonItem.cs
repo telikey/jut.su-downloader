@@ -34,6 +34,20 @@ namespace jut.su_downloader.Model.ModelRepository.Items
             set => SetField(ref _Path, value);
         }
 
+        private int _Order = 0;
+        public int Order
+        {
+            get => _Order;
+            set => SetField(ref _Order, value);
+        }
+
+        private bool _IsFilms = false;
+        public bool IsFilms
+        {
+            get => _IsFilms;
+            set => SetField(ref _IsFilms, value);
+        }
+
         private int[] _ElementItems = new int[0];
 
         private ObservableCollection<IElementItem> _ElementItems_Array = null;
@@ -56,13 +70,15 @@ namespace jut.su_downloader.Model.ModelRepository.Items
             {
                 _ElementItems_Array = value;
                 var repos = (Repositories.Repositories)ClassInjector.Injector.GetObject(typeof(Repositories.Repositories));
-                repos.ElementItemsRepository.Update(_ElementItems_Array.Select(x => (ElementItem)x).ToArray());
+                repos.ElementItemsRepository.Update(_ElementItems_Array.Select(x => (IElementItem)x).ToArray());
+                _ElementItems = _ElementItems_Array.Select(x => x.Id).ToArray();
             }
         }
         private void CollectionChangedMethod(object sender, NotifyCollectionChangedEventArgs e)
         {
             var repos = (Repositories.Repositories)ClassInjector.Injector.GetObject(typeof(Repositories.Repositories));
-            repos.ElementItemsRepository.Update(_ElementItems_Array.Select(x=>(ElementItem)x).ToArray());
+            repos.ElementItemsRepository.Update(_ElementItems_Array.Select(x=>(IElementItem)x).ToArray());
+            _ElementItems = _ElementItems_Array.Select(x => x.Id).ToArray();
         }
 
 

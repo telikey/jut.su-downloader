@@ -1,4 +1,5 @@
-﻿using JSONPacker;
+﻿using AnimeDownloaderLib.Model;
+using JSONPacker;
 using jut.su_downloader.Model.Dto;
 using jut.su_downloader.Model.ModelRepository.Items;
 using Newtonsoft.Json;
@@ -11,28 +12,38 @@ using System.Threading.Tasks;
 
 namespace jut.su_downloader.Model.ModelRepository.Repositories
 {
-    public class SeasonItemsRepository : IItemRepository<SeasonItem>
+    public class SeasonItemsRepository : IItemRepository<ISeasonItem>
     {
         private IJsonPackerLogic _jsonPackerLogic;
         private string _path="";
-        private SeasonItem[] _items;
+        private ISeasonItem[] _items;
         public SeasonItemsRepository(IJsonPackerLogic jsonPackerLogic,string Path)
         {
             this._jsonPackerLogic = jsonPackerLogic;
+            this._path = Path;
         }
 
-        public SeasonItem GetById(int id)
+        public int GetId()
+        {
+            return _items.Length + 1;
+        }
+        public ISeasonItem GetById(int id)
         {
             return _items.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public SeasonItem[] GetRangeByIds(int[] ids)
+        public ISeasonItem[] GetRangeByIds(int[] ids)
         {
             return _items.Where(x => ids.Contains(x.Id)).ToArray();
         }
-        public SeasonItem[] GetRange()
+        public ISeasonItem[] GetRange()
         {
             return _items.ToArray();
+        }
+
+        public void Fill(ISeasonItem[] inArray)
+        {
+            this._items = inArray;
         }
 
         public void Load()
@@ -50,7 +61,7 @@ namespace jut.su_downloader.Model.ModelRepository.Repositories
             }
             else
             {
-                _items= new SeasonItem[0];
+                _items= new ISeasonItem[0];
             }
         }
 
@@ -59,14 +70,14 @@ namespace jut.su_downloader.Model.ModelRepository.Repositories
             if (_path != "")
             {
                 File.Create(_path).Close();
-                var dtoArray = _items.Select(x => _jsonPackerLogic.MapToDto<SeasonItemDto, SeasonItem>(x)).ToArray();
+                var dtoArray = _items.Select(x => _jsonPackerLogic.MapToDto<SeasonItemDto, SeasonItem>((SeasonItem)x)).ToArray();
 
                 var text=JsonConvert.SerializeObject(dtoArray);
                 File.WriteAllText(_path, text);
             }
         }
 
-        public void Update(SeasonItem[] array)
+        public void Update(ISeasonItem[] array)
         {
             _items = array;
         }

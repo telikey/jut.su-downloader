@@ -25,9 +25,11 @@ namespace jut.su_downloader.ViewModel
             this._iDownloaderLogic = IDownloaderLogic;
             this._mainWindowCommands = commands;
 
-            _animeItems = new ObservableCollection<IAnimeItem>(repositories.AnimeItemsRepository.GetRange());
+            repositories.Fill(2);
 
-            this._iDownloaderLogic.Fill(this._animeItems,60);
+            repositories.Save();
+
+            _animeItems = new ObservableCollection<IAnimeItem>(repositories.AnimeItemsRepository.GetRange());
         }
 
         private ObservableCollection<IAnimeItem> _animeItems = null;

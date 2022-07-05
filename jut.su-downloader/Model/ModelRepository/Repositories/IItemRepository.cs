@@ -8,9 +8,11 @@ namespace jut.su_downloader.Model.ModelRepository.Repositories
 {
     public interface IItemRepository<TItem>
     {
+        public int GetId();
         TItem GetById(int id);
         TItem[] GetRangeByIds(int[] ids);
         TItem[] GetRange();
+        void Fill(TItem[] inArray);
 
         void Update(TItem[] array);
 

@@ -15,5 +15,9 @@ namespace jut.su_downloader.Model.Dto
         public string Path = "";
 
         public int[] ElementItems = new int[0];
+
+        public int Order = 0;
+
+        public bool IsFilms=false;
     }
 }

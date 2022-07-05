@@ -1,4 +1,5 @@
-﻿using JSONPacker;
+﻿using AnimeDownloaderLib.Model;
+using JSONPacker;
 using jut.su_downloader.Model.Dto;
 using jut.su_downloader.Model.ModelRepository.Items;
 using Newtonsoft.Json;
@@ -11,28 +12,39 @@ using System.Threading.Tasks;
 
 namespace jut.su_downloader.Model.ModelRepository.Repositories
 {
-    public class AnimeItemsRepository : IItemRepository<AnimeItem>
+    public class AnimeItemsRepository : IItemRepository<IAnimeItem>
     {
         private IJsonPackerLogic _jsonPackerLogic;
         private string _path="";
-        private AnimeItem[] _items;
+        private IAnimeItem[] _items;
         public AnimeItemsRepository(IJsonPackerLogic jsonPackerLogic,string Path)
         {
             this._jsonPackerLogic = jsonPackerLogic;
+            this._path = Path;
         }
 
-        public AnimeItem GetById(int id)
+        public int GetId()
+        {
+            return _items.Length + 1;
+        }
+
+        public IAnimeItem GetById(int id)
         {
             return _items.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public AnimeItem[] GetRangeByIds(int[] ids)
+        public IAnimeItem[] GetRangeByIds(int[] ids)
         {
             return _items.Where(x => ids.Contains(x.Id)).ToArray();
         }
-        public AnimeItem[] GetRange()
+        public IAnimeItem[] GetRange()
         {
             return _items.ToArray();
+        }
+
+        public void Fill(IAnimeItem[] inArray)
+        {
+            this._items = inArray;
         }
 
         public void Load()
@@ -50,7 +62,7 @@ namespace jut.su_downloader.Model.ModelRepository.Repositories
             }
             else
             {
-                _items= new AnimeItem[0];
+                _items= new IAnimeItem[0];
             }
         }
 
@@ -59,14 +71,14 @@ namespace jut.su_downloader.Model.ModelRepository.Repositories
             if (_path != "")
             {
                 File.Create(_path).Close();
-                var dtoArray = _items.Select(x => _jsonPackerLogic.MapToDto<AnimeItemDto, AnimeItem>(x)).ToArray();
+                var dtoArray = _items.Select(x => _jsonPackerLogic.MapToDto<AnimeItemDto, AnimeItem>((AnimeItem)x)).ToArray();
 
                 var text=JsonConvert.SerializeObject(dtoArray);
                 File.WriteAllText(_path, text);
             }
         }
 
-        public void Update(AnimeItem[] array)
+        public void Update(IAnimeItem[] array)
         {
             _items = array;
         }

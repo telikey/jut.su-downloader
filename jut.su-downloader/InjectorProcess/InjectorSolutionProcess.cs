@@ -34,7 +34,7 @@ namespace jut.su_downloader.InjectorProcess
             }, true);
 
             //DownloaderLogic
-            Injector.Add<IDownloaderLogic<IAnimeItem>, Jut_su_Logic>(null, true);
+            Injector.Add<IDownloaderLogic<AnimeDownloaderLib.Model.IAnimeItem>, Jut_su_Logic>(null, true);
 
             //JsonPacker
             Injector.Add<IJsonPackerLogic, JsonPackerLogic>(new object[]
@@ -44,15 +44,15 @@ namespace jut.su_downloader.InjectorProcess
             }, true);
 
             //Repositories
-            Injector.Add<IItemRepository<ElementItem>, ElementItemsRepository>(new object[]
+            Injector.Add<IItemRepository<IElementItem>, ElementItemsRepository>(new object[]
             {
                 "C:\\temp\\downloader\\ElementItems.txt"
             }, true);
-            Injector.Add<IItemRepository<SeasonItem>, SeasonItemsRepository>(new object[]
+            Injector.Add<IItemRepository<ISeasonItem>, SeasonItemsRepository>(new object[]
             {
                 "C:\\temp\\downloader\\SeasonItems.txt"
             }, true);
-            Injector.Add<IItemRepository<AnimeItem>, AnimeItemsRepository>(new object[]
+            Injector.Add<IItemRepository<IAnimeItem>, AnimeItemsRepository>(new object[]
             {
                 "C:\\temp\\downloader\\AnimeItems.txt"
             }, true);

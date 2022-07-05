@@ -32,6 +32,27 @@ namespace jut.su_downloader.Model.ModelRepository.Items
             set => SetField(ref _Path, value);
         }
 
+        private bool _CanDownload = false;
+        public bool CanDownload
+        {
+            get => _CanDownload;
+            set => SetField(ref _CanDownload, value);
+        }
+
+        private string _DownloadPath = "";
+        public string DownloadPath
+        {
+            get => _DownloadPath;
+            set => SetField(ref _DownloadPath, value);
+        }
+
+        private int _Order = 0;
+        public int Order
+        {
+            get => _Order;
+            set => SetField(ref _Order, value);
+        }
+
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler? PropertyChanged;
 

@@ -13,5 +13,10 @@ namespace jut.su_downloader.Model.Dto
         public string Title="";
 
         public string Path = "";
+
+        public int Order = 0;
+
+        public bool CanDownload { get; set; }=false;
+        public string DownloadPath { get; set; } = "";
     }
 }
