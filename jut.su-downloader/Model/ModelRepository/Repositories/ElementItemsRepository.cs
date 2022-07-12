@@ -53,17 +53,18 @@ namespace jut.su_downloader.Model.ModelRepository.Repositories
             {
                 if (File.Exists(_path))
                 {
-                    var text=File.ReadAllText(_path);
+                    var text = File.ReadAllText(_path);
 
-                    var dtoArray=JsonConvert.DeserializeObject<ElementItemDto[]>(text);
-                    _items = dtoArray.Select(x=>_jsonPackerLogic.MapFromDto<ElementItem, ElementItemDto>(x)).ToArray();
+                    var dtoArray = JsonConvert.DeserializeObject<ElementItemDto[]>(text);
+                    if (dtoArray != null)
+                    {
+                        _items = dtoArray.Select(x => _jsonPackerLogic.MapFromDto<ElementItem, ElementItemDto>(x)).ToArray();
+                        return;
+                    }
 
                 }
             }
-            else
-            {
-                _items= new IElementItem[0];
-            }
+            _items = new IElementItem[0];
         }
 
         public void Save()

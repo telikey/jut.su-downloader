@@ -1,4 +1,6 @@
-﻿using ClassInjector;
+﻿using AnimeDownloaderLib;
+using AnimeDownloaderLib.Model;
+using ClassInjector;
 using jut.su_downloader.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,10 +14,66 @@ namespace WPFCommands
     public class MainWindowCommands: IFromObjectForCommandLogic
     {
         [GetCommandMethod]
-        private ICommand button1_Command()
+        private ICommand LoadAnime_Command()
         {
-            return new RelayCommand((x) => {
-                var mainWindowVM=Injector.GetObject<MainWindowVM>();
+            return new RelayCommand((x) =>
+            {
+                try
+                {
+                    var animeCount = Convert.ToInt32(x);
+                    var mainWindowVM = Injector.GetObject<MainWindowVM>();
+                    var downloader = Injector.GetObject<IAnimeDownloaderLogic>();
+                    var lst=downloader.FillAnime(animeCount);
+                    mainWindowVM.AnimeItems.Clear();
+                    foreach(var item in lst)
+                    {
+                        mainWindowVM.AnimeItems.Add(item);
+                    }
+                }
+                catch { }
+            });
+        }
+
+        [GetCommandMethod]
+        private ICommand LoadSeasons_Command()
+        {
+            return new RelayCommand((x) =>
+            {
+                if (x is IAnimeItem) {
+                    var animeItem = x as IAnimeItem;
+                    if (animeItem.SeasonsItems.Count == 0)
+                    {
+                        var downloader = Injector.GetObject<IAnimeDownloaderLogic>();
+                        var lst = downloader.FillSeasons((new[] { animeItem }).ToList());
+                        animeItem.SeasonsItems.Clear();
+                        foreach (var item in lst)
+                        {
+                            animeItem.SeasonsItems.Add(item);
+                        }
+                    }
+                }
+            });
+        }
+
+        [GetCommandMethod]
+        private ICommand LoadElements_Command()
+        {
+            return new RelayCommand((x) =>
+            {
+                if (x is ISeasonItem)
+                {
+                    var seasonItem = x as ISeasonItem;
+                    if (seasonItem.ElementItems.Count == 0)
+                    {
+                        var downloader = Injector.GetObject<IAnimeDownloaderLogic>();
+                        var lst = downloader.FillElements((new[] { seasonItem }).ToList());
+                        seasonItem.ElementItems.Clear();
+                        foreach (var item in lst)
+                        {
+                            seasonItem.ElementItems.Add(item);
+                        }
+                    }
+                }
             });
         }
     }

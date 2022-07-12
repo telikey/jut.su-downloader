@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace jut.su_downloader.Model.ModelRepository.Items
 {
-    public class AnimeItem:INotifyPropertyChanged, IAnimeItem
+    public class SeasonItem : INotifyPropertyChanged,ISeasonItem
     {
         private int _Id = 0;
         public int Id
@@ -34,46 +34,57 @@ namespace jut.su_downloader.Model.ModelRepository.Items
             set => SetField(ref _Path, value);
         }
 
-        private string _ImageURI = "";
-        public string ImageURI
+        private int _Order = 0;
+        public int Order
         {
-            get => _ImageURI;
-            set => SetField(ref _ImageURI, value);
+            get => _Order;
+            set => SetField(ref _Order, value);
         }
 
-        private int[] _SeasonsItems = new int[0];
-
-        private ObservableCollection<ISeasonItem> _SeasonsItems_Array = null;
-        public ObservableCollection<ISeasonItem> SeasonsItems
+        private bool _IsFilms = false;
+        public bool IsFilms
         {
-            get 
+            get => _IsFilms;
+            set => SetField(ref _IsFilms, value);
+        }
+
+        public bool CanDownload
+        {
+            get => _ElementItems_Array.FirstOrDefault() == null ? false : _ElementItems_Array.FirstOrDefault().CanDownload;
+        }
+
+        private int[] _ElementItems = new int[0];
+
+        private ObservableCollection<IElementItem> _ElementItems_Array = null;
+        public ObservableCollection<IElementItem> ElementItems
+        {
+            get
             {
-                if (_SeasonsItems_Array != null)
+                if (_ElementItems_Array != null)
                 {
-                    return _SeasonsItems_Array;
+                    return _ElementItems_Array;
                 }
                 else
                 {
-                    var repos=(Repositories.Repositories)ClassInjector.Injector.GetObject(typeof(Repositories.Repositories));
-                    _SeasonsItems_Array=new ObservableCollection<ISeasonItem>(repos.SeasonItemsRepository.GetRangeByIds(_SeasonsItems));
-                    _SeasonsItems_Array.CollectionChanged += CollectionChangedMethod;
-                    return _SeasonsItems_Array;
+                    var repos = (Repositories.Repositories)ClassInjector.Injector.GetObject(typeof(Repositories.Repositories));
+                    _ElementItems_Array = new ObservableCollection<IElementItem>(repos.ElementItemsRepository.GetRangeByIds(_ElementItems));
+                    _ElementItems_Array.CollectionChanged += CollectionChangedMethod;
+                    return _ElementItems_Array;
                 }
             }
             set
             {
-                _SeasonsItems_Array = value;
+                _ElementItems_Array = value;
                 var repos = (Repositories.Repositories)ClassInjector.Injector.GetObject(typeof(Repositories.Repositories));
-                repos.SeasonItemsRepository.Update(_SeasonsItems_Array.Select(x=>(ISeasonItem)x).ToArray());
-                _SeasonsItems = _SeasonsItems_Array.Select(x => x.Id).ToArray();
+                repos.ElementItemsRepository.Update(_ElementItems_Array.Select(x => (IElementItem)x).ToArray());
+                _ElementItems = _ElementItems_Array.Select(x => x.Id).ToArray();
             }
         }
-
         private void CollectionChangedMethod(object sender, NotifyCollectionChangedEventArgs e)
         {
             var repos = (Repositories.Repositories)ClassInjector.Injector.GetObject(typeof(Repositories.Repositories));
-            repos.SeasonItemsRepository.Update(_SeasonsItems_Array.Select(x=>(ISeasonItem)x).ToArray());
-            _SeasonsItems = _SeasonsItems_Array.Select(x => x.Id).ToArray();
+            repos.ElementItemsRepository.Update(_ElementItems_Array.Select(x=>(IElementItem)x).ToArray());
+            _ElementItems = _ElementItems_Array.Select(x => x.Id).ToArray();
         }
 
 

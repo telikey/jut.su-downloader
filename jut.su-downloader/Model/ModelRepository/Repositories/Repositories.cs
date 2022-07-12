@@ -15,13 +15,11 @@ namespace jut.su_downloader.Model.ModelRepository.Repositories
         public IItemRepository<ISeasonItem> SeasonItemsRepository { get; set; }
         public IItemRepository<IElementItem> ElementItemsRepository { get; set; }
 
-        private IDownloaderLogic<AnimeDownloaderLib.Model.IAnimeItem> _iDownloaderLogic = null;
         public Repositories(
             IItemRepository<AnimeDownloaderLib.Model.IAnimeItem> animeItemsReportsitory,
             IItemRepository<ISeasonItem> seasonItemsRepository,
-            IItemRepository<IElementItem> elementItemsRepository,
-
-            IDownloaderLogic<AnimeDownloaderLib.Model.IAnimeItem> IDownloaderLogic)
+            IItemRepository<IElementItem> elementItemsRepository
+            )
         {
             this.AnimeItemsRepository = animeItemsReportsitory;
             this.SeasonItemsRepository = seasonItemsRepository;
@@ -30,17 +28,6 @@ namespace jut.su_downloader.Model.ModelRepository.Repositories
             this.AnimeItemsRepository.Load();
             this.ElementItemsRepository.Load();
             this.SeasonItemsRepository.Load();
-
-            this._iDownloaderLogic = IDownloaderLogic;
-        }
-
-        public void Fill(int NumberOfElements)
-        {
-            List<IAnimeItem> array = new List<IAnimeItem>();
-            this._iDownloaderLogic.Fill(array, NumberOfElements);
-            AnimeItemsRepository.Fill(array.ToArray());
-            SeasonItemsRepository.Fill(array.SelectMany(x=>x.SeasonsItems.ToArray()).Distinct().ToArray());
-            ElementItemsRepository.Fill(array.SelectMany(x => x.SeasonsItems.ToArray()).Distinct().SelectMany(x=>x.ElementItems).Distinct().ToArray());
         }
 
         public void Save()
@@ -52,9 +39,9 @@ namespace jut.su_downloader.Model.ModelRepository.Repositories
 
         public void Load()
         {
-            this.AnimeItemsRepository.Load();
-            this.SeasonItemsRepository.Load();
             this.ElementItemsRepository.Load();
+            this.SeasonItemsRepository.Load();
+            this.AnimeItemsRepository.Load();
         }
     }
 }

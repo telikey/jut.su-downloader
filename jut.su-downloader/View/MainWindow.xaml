@@ -5,12 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:jut.su_downloader.View"
         xmlns:commandConverter="clr-namespace:WPFCommands;assembly=WPFCommands"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Height="450" Width="800">
     <Window.Resources>
         <commandConverter:StringToCommandConverter x:Key="StringToCommandConverter"></commandConverter:StringToCommandConverter>
     </Window.Resources>
     <Grid>
-        <Button Command="{Binding MainWindowCommands, Converter={StaticResource StringToCommandConverter}, ConverterParameter='button1_Command'}"></Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Margin="0,0,5,0" Grid.Column="0" x:Name="animeCountTextBox" HorizontalAlignment="Stretch"></TextBox>
+                <Button 
+                    Grid.Column="1"
+                    Content="RF"
+                    Margin="5,0,0,0"
+                    HorizontalAlignment="Right"
+                    Command="{Binding MainWindowCommands, Converter={StaticResource StringToCommandConverter}, ConverterParameter='LoadAnime_Command'}"
+                    CommandParameter="{Binding ElementName=animeCountTextBox, Path=Text}"></Button>
+            </Grid>
+            <ListView x:Name="animeListItems" ItemsSource="{Binding AnimeItems}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction 
+                            Command="{Binding MainWindowCommands, Converter={StaticResource StringToCommandConverter}, ConverterParameter='LoadSeasons_Command'}"
+                            CommandParameter="{Binding ElementName=animeListItems, Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Title}"></TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <ListView x:Name="seasonsListItems" Grid.Column="1" ItemsSource="{Binding ElementName=animeListItems, Path=SelectedItem.SeasonsItems}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction 
+                            Command="{Binding MainWindowCommands, Converter={StaticResource StringToCommandConverter}, ConverterParameter='LoadElements_Command'}"
+                            CommandParameter="{Binding ElementName=seasonsListItems, Path=SelectedItem}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Title}"></TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView Grid.Column="2" ItemsSource="{Binding ElementName=seasonsListItems, Path=SelectedItem.ElementItems}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Title}"></TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--<Button Command="{Binding MainWindowCommands, Converter={StaticResource StringToCommandConverter}, ConverterParameter='button1_Command'}"></Button>-->
     </Grid>
 </Window>

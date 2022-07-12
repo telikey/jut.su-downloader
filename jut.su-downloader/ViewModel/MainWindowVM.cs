@@ -16,18 +16,12 @@ namespace jut.su_downloader.ViewModel
 {
     public class MainWindowVM
     {
-        private IDownloaderLogic<IAnimeItem> _iDownloaderLogic =null;
         private MainWindowCommands _mainWindowCommands = null;
         public MainWindowCommands MainWindowCommands { get => _mainWindowCommands; }
 
-        public MainWindowVM(IDownloaderLogic<IAnimeItem> IDownloaderLogic, MainWindowCommands commands, Repositories repositories)
+        public MainWindowVM(MainWindowCommands commands, Repositories repositories)
         {
-            this._iDownloaderLogic = IDownloaderLogic;
             this._mainWindowCommands = commands;
-
-            repositories.Fill(2);
-
-            repositories.Save();
 
             _animeItems = new ObservableCollection<IAnimeItem>(repositories.AnimeItemsRepository.GetRange());
         }

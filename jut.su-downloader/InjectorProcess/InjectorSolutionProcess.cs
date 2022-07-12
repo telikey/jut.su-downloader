@@ -34,7 +34,7 @@ namespace jut.su_downloader.InjectorProcess
             }, true);
 
             //DownloaderLogic
-            Injector.Add<IDownloaderLogic<AnimeDownloaderLib.Model.IAnimeItem>, Jut_su_Logic>(null, true);
+            Injector.Add<IAnimeDownloaderLogic, Jut_su_downloader_Logic>(null, true);
 
             //JsonPacker
             Injector.Add<IJsonPackerLogic, JsonPackerLogic>(new object[]
