@@ -8,31 +8,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WPFCommands;
 
-namespace WPFCommands
+namespace jut.su_downloader.Logic.Commands
 {
-    public class MainWindowCommands: IFromObjectForCommandLogic
+    public class AnimePageCommands: IFromObjectForCommandLogic
     {
-        [GetCommandMethod]
-        private ICommand LoadAnime_Command()
-        {
-            return new RelayCommand((x) =>
-            {
-                try
-                {
-                    var animeCount = Convert.ToInt32(x);
-                    var mainWindowVM = Injector.GetObject<MainWindowVM>();
-                    var downloader = Injector.GetObject<IAnimeDownloaderLogic>();
-                    var lst=downloader.FillAnime(animeCount);
-                    mainWindowVM.AnimeItems.Clear();
-                    foreach(var item in lst)
-                    {
-                        mainWindowVM.AnimeItems.Add(item);
-                    }
-                }
-                catch { }
-            });
-        }
+        //[GetCommandMethod]
+        //private ICommand LoadAnime_Command()
+        //{
+        //    return new RelayCommand((x) =>
+        //    {
+        //        try
+        //        {
+        //            var animeCount = Convert.ToInt32(x);
+        //            var mainWindowVM = Injector.GetObject<AnimePageVM>();
+        //            var downloader = Injector.GetObject<IAnimeDownloaderLogic>();
+        //            var lst=downloader.FillAnime(animeCount);
+        //            mainWindowVM.AnimeItems.Clear();
+        //            foreach(var item in lst)
+        //            {
+        //                mainWindowVM.AnimeItems.Add(item);
+        //            }
+        //        }
+        //        catch { }
+        //    });
+        //}
 
         [GetCommandMethod]
         private ICommand LoadSeasons_Command()

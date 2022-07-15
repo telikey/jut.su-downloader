@@ -12,6 +12,7 @@ using jut.su_downloader.Model.ModelRepository.Repositories;
 using jut.su_downloader.Model.ModelRepository.Items;
 using AnimeDownloaderLib;
 using AnimeDownloaderLib.Model;
+using jut.su_downloader.Logic.Commands;
 
 namespace jut.su_downloader.InjectorProcess
 {
@@ -25,13 +26,14 @@ namespace jut.su_downloader.InjectorProcess
             Injector.Add<IElementItem, ElementItem>(null, false);
 
             //Commands
-            Injector.Add<MainWindowCommands, MainWindowCommands>(null, true);
+            Injector.Add<AnimePageCommands, AnimePageCommands>(null, true);
+            Injector.Add<NavigationPageCommands, NavigationPageCommands>(null, true);
+            Injector.Add<SettingsPageCommands, SettingsPageCommands>(null, true);
 
             //CommandLogic
-            Injector.Add<ICommandLogic<ICommand, MainWindowCommands>, CommandLogic<ICommand, MainWindowCommands>>(new object[]
-            {
-                "Command"
-            }, true);
+            Injector.Add<ICommandLogic<ICommand, AnimePageCommands>, CommandLogic<ICommand, AnimePageCommands>>(null, true);
+            Injector.Add<ICommandLogic<ICommand, NavigationPageCommands>, CommandLogic<ICommand, NavigationPageCommands>>(null, true);
+            Injector.Add<ICommandLogic<ICommand, SettingsPageCommands>, CommandLogic<ICommand, SettingsPageCommands>>(null, true);
 
             //DownloaderLogic
             Injector.Add<IAnimeDownloaderLogic, Jut_su_downloader_Logic>(null, true);
@@ -59,7 +61,9 @@ namespace jut.su_downloader.InjectorProcess
             Injector.Add<Repositories, Repositories>(null, true);
 
             //MainWindowVM
-            Injector.Add<MainWindowVM, MainWindowVM>(null, true);
+            Injector.Add<AnimePageVM, AnimePageVM>(null, true);
+            Injector.Add<NavigationPageVM, NavigationPageVM>(null, true);
+            Injector.Add<SettingsPageVM, SettingsPageVM>(null, true);
         }
     }
 }

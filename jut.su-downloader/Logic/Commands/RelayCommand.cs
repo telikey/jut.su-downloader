@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
-namespace WPFCommands
+namespace jut.su_downloader.Logic.Commands
 {
     public class RelayCommand : ICommand
     {
@@ -31,6 +31,10 @@ namespace WPFCommands
         public void Execute(object parameter)
         {
             this.execute(parameter);
+        }
+        public void RaiseCanExecuteChanged()
+        {
+            CommandManager.InvalidateRequerySuggested();
         }
     }
 }

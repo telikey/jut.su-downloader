@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.0.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks.MaterialDesign" Version="4.0.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
   </ItemGroup>
 
@@ -20,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="View\MainWindow.xaml">
+    <Page Update="View\NavigationPage.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
   </ItemGroup>

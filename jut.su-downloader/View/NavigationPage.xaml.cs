@@ -21,14 +21,13 @@ namespace jut.su_downloader.View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NavigationPage : Window
     {
-        public MainWindow()
+        public NavigationPage()
         {
-            InjectorSolutionProcess.Fill();
             InitializeComponent();
 
-            this.DataContext = Injector.GetObject<MainWindowVM>();
+            this.DataContext = Injector.GetObject<NavigationPageVM>();
         }
     }
 }

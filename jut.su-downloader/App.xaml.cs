@@ -1,4 +1,5 @@
-﻿using System;
+﻿using jut.su_downloader.InjectorProcess;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,9 @@ namespace jut.su_downloader
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            InjectorSolutionProcess.Fill();
+        }
     }
 }
