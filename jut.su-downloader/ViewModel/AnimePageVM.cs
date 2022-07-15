@@ -33,6 +33,11 @@ namespace jut.su_downloader.ViewModel
             {
                 _animeItems.Add(new AnimeItem() { Title = "Наруто 2", ImageURI = "https://static.insales-cdn.com/images/products/1/3690/548621930/abystyle-abydco761-naruto-group-poster-61x91-5cm.jpg" });
             }
+
+            //animeDownloader.Init();
+            //var items = animeDownloader.FillAnime(1, 2);
+
+            //_animeItems = new ObservableCollection<IAnimeItem>(items);
         }
 
         private ObservableCollection<IAnimeItem> _animeItems = null;

@@ -13,6 +13,7 @@
 
     <Style x:Key="NavigationListBoxStyle" TargetType="{x:Type ListBox}">
         <Setter Property="Background" Value="{StaticResource PrimaryDarkBrush}"/>
+        <Setter Property="Margin" Value="0,-1,0,0"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>

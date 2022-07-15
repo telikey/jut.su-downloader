@@ -6,6 +6,7 @@ using jut.su_downloader.Logic.Commands;
 using jut.su_downloader.Model.Dto;
 using jut.su_downloader.Model.ModelRepository.Items;
 using jut.su_downloader.Model.ModelRepository.Repositories;
+using jut.su_downloader.View.Controls.Selector.Selectors.File;
 using jut.su_downloader.View.Controls.Selector.Selectors.FileWithDownloader;
 using System;
 using System.Collections.Generic;
@@ -35,9 +36,23 @@ namespace jut.su_downloader.ViewModel
         private static IFileWithDownloaderValue GeckoDriverValueCreate()
         {
             var result = Injector.GetObject<IFileWithDownloaderValue>();
-            result.Label = "GeckoDriver Path:";
+            result.Label = "GeckoDriver Path";
             result.FileName = "";
             result.DownloadPath = "https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-win64.zip";
+            return result;
+        }
+
+
+        IFolderValue _defaultDownloadPathValue = DefaultDownloadPathValueCreate();
+        public IFolderValue DefaultDownloadPathValue
+        {
+            get => _defaultDownloadPathValue;
+        }
+        private static IFolderValue DefaultDownloadPathValueCreate()
+        {
+            var result = Injector.GetObject<IFolderValue>();
+            result.Label = "Default Download Path";
+            result.FolderName = "";
             return result;
         }
     }

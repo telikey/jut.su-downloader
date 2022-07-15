@@ -22,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="View\Controls\Selector\Selectors\File\FolderSelector.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="View\NavigationPage.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>

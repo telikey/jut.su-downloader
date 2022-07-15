@@ -17,7 +17,8 @@
     </Page.Resources>
     <Grid>
         <StackPanel Margin="5,5,0,0" Orientation="Vertical">
-            <selector:Selector Type="FileWithDownloader" Value="{Binding GeckoDriverValue}"></selector:Selector>
+            <selector:Selector Margin="0,5,0,0" Type="FileWithDownloader" Value="{Binding GeckoDriverValue}"></selector:Selector>
+            <selector:Selector Margin="0,5,0,0" Type="File" Value="{Binding DefaultDownloadPathValue}"></selector:Selector>
         </StackPanel>
     </Grid>
 </Page>

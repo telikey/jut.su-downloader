@@ -21,7 +21,7 @@ namespace jut.su_downloader.View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class NavigationPage : Window
+    public partial class NavigationPage : Page
     {
         public NavigationPage()
         {
