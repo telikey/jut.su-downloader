@@ -4,11 +4,20 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:jut.su_downloader.View"
+      xmlns:selector="clr-namespace:jut.su_downloader.View.Controls.Selector"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SettingsPage">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="SettingsPageResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
-        
+        <StackPanel Margin="5,5,0,0" Orientation="Vertical">
+            <selector:Selector Type="FileWithDownloader" Value="{Binding GeckoDriverValue}"></selector:Selector>
+        </StackPanel>
     </Grid>
 </Page>

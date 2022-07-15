@@ -13,6 +13,7 @@ using jut.su_downloader.Model.ModelRepository.Items;
 using AnimeDownloaderLib;
 using AnimeDownloaderLib.Model;
 using jut.su_downloader.Logic.Commands;
+using jut.su_downloader.View.Controls.Selector.Selectors.FileWithDownloader;
 
 namespace jut.su_downloader.InjectorProcess
 {
@@ -24,6 +25,9 @@ namespace jut.su_downloader.InjectorProcess
             Injector.Add<IAnimeItem, AnimeItem>(null, false);
             Injector.Add<ISeasonItem, SeasonItem>(null, false);
             Injector.Add<IElementItem, ElementItem>(null, false);
+
+            //Selector
+            Injector.Add<IFileWithDownloaderValue, FileWithDownloaderValue>(null, false);
 
             //Commands
             Injector.Add<AnimePageCommands, AnimePageCommands>(null, true);

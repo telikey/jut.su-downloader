@@ -11,10 +11,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AnimePage">
-    <Page.Resources>
+    <Page.Resources> 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="AnimePageResources.xaml"/>
+                <ResourceDictionary Source="BaseControlStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -52,7 +53,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Button Style="{StaticResource ResourceKey=NavigateButton}"
+            <Button Style="{StaticResource ResourceKey=Button}"
                     Width="80"
                     Margin="10"
                     Command="{Binding ElementName=animeItemsControl, Path=PreviousPageCommand}">
@@ -60,7 +61,7 @@
                                         HorizontalAlignment="Center" Margin="12" Kind="ArrowBack"/>
             </Button>
             <Button Grid.Column="2"
-                    Style="{StaticResource ResourceKey=NavigateButton}"
+                    Style="{StaticResource ResourceKey=Button}"
                     Width="80"
                     Margin="10"
                     Command="{Binding ElementName=animeItemsControl, Path=NextPageCommand}">

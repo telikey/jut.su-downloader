@@ -7,23 +7,4 @@
     </ResourceDictionary.MergedDictionaries>
 
     <commandConverter:StringToCommandConverter x:Key="StringToCommandConverter"></commandConverter:StringToCommandConverter>
-
-    <Style x:Key="NavigateButton" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{StaticResource PrimaryLightBrush}"></Setter>
-        <Setter Property="BorderThickness" Value="0"></Setter>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{StaticResource PrimaryLightBrush}"></Setter>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Background="{StaticResource PrimaryDarkBrush}">
-                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
 </ResourceDictionary>
