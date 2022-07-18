@@ -1,5 +1,5 @@
 # jut.su-downloader
-Настольное приложение для поиска и скачивания аниме с разных сайтов 
+Настольное приложение для поиска и скачивания аниме с разных сайтов
 Использует:
 - [Json Packer](https://github.com/telikey/JSONPacker)
 - [Anime Downloader Lib](https://github.com/telikey/AnimeDownloaderLib)
