@@ -17,14 +17,14 @@
   <ItemGroup>
     <ProjectReference Include="..\..\AnimeDownloaderLib\AnimeDownloaderLib\AnimeDownloaderLib.csproj" />
     <ProjectReference Include="..\..\classInjector\ClassInjector\ClassInjector.csproj" />
+    <ProjectReference Include="..\..\Controls\Controls\Controls.csproj" />
     <ProjectReference Include="..\..\JSONPacker\JSONPacker\JSONPacker.csproj" />
     <ProjectReference Include="..\..\WPFCommands\WPFCommands\WPFCommands.csproj" />
+    <ProjectReference Include="..\..\WPFControls\Controls\WPFControls.csproj" />
+    <ProjectReference Include="..\..\WPFStyles\WPFStyles\WPFStyles.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="View\Controls\Selector\Selectors\File\FolderSelector.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
     <Page Update="View\NavigationPage.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>

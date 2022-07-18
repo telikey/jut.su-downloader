@@ -7,15 +7,16 @@
       xmlns:commandConverter="clr-namespace:WPFCommands;assembly=WPFCommands"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-      xmlns:controls="clr-namespace:jut.su_downloader.View.Controls"
+      xmlns:controls="clr-namespace:WPFControls;assembly=WPFControls"
+      xmlns:styles="clr-namespace:WPFStyles;assembly=WPFStyles"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AnimePage">
     <Page.Resources> 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="AnimePageResources.xaml"/>
-                <ResourceDictionary Source="BaseControlStyles.xaml"/>
+                <styles:BaseColors />
+                <styles:BaseButton />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -53,7 +54,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Button Style="{StaticResource ResourceKey=Button}"
+            <Button Style="{StaticResource BaseButton}"
                     Width="80"
                     Margin="10"
                     Command="{Binding ElementName=animeItemsControl, Path=PreviousPageCommand}">
@@ -61,7 +62,7 @@
                                         HorizontalAlignment="Center" Margin="12" Kind="ArrowBack"/>
             </Button>
             <Button Grid.Column="2"
-                    Style="{StaticResource ResourceKey=Button}"
+                    Style="{StaticResource BaseButton}"
                     Width="80"
                     Margin="10"
                     Command="{Binding ElementName=animeItemsControl, Path=NextPageCommand}">

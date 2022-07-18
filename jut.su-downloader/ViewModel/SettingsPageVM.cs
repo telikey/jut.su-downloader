@@ -6,8 +6,6 @@ using jut.su_downloader.Logic.Commands;
 using jut.su_downloader.Model.Dto;
 using jut.su_downloader.Model.ModelRepository.Items;
 using jut.su_downloader.Model.ModelRepository.Repositories;
-using jut.su_downloader.View.Controls.Selector.Selectors.File;
-using jut.su_downloader.View.Controls.Selector.Selectors.FileWithDownloader;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WPFCommands;
+using WPFControls.Selector.Selectors.FileWithDownloader;
+using WPFControls.Selector.Selectors.Folder;
 
 namespace jut.su_downloader.ViewModel
 {

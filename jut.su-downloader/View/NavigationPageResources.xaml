@@ -3,9 +3,11 @@
                     xmlns:commandConverter="clr-namespace:WPFCommands;assembly=WPFCommands"
                     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
-                    xmlns:views="clr-namespace:jut.su_downloader.View">
+                    xmlns:views="clr-namespace:jut.su_downloader.View"
+                    xmlns:styles="clr-namespace:WPFStyles;assembly=WPFStyles">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="BaseColors.xaml"/>
+        <styles:BaseColors />
+        <styles:BaseButton />
     </ResourceDictionary.MergedDictionaries>
 
     <commandConverter:StringToCommandConverter x:Key="StringToCommandConverter"></commandConverter:StringToCommandConverter>

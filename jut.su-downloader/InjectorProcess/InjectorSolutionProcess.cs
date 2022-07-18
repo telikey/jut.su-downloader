@@ -13,8 +13,8 @@ using jut.su_downloader.Model.ModelRepository.Items;
 using AnimeDownloaderLib;
 using AnimeDownloaderLib.Model;
 using jut.su_downloader.Logic.Commands;
-using jut.su_downloader.View.Controls.Selector.Selectors.FileWithDownloader;
-using jut.su_downloader.View.Controls.Selector.Selectors.File;
+using WPFControls.Selector.Selectors.FileWithDownloader;
+using WPFControls.Selector.Selectors.Folder;
 
 namespace jut.su_downloader.InjectorProcess
 {
