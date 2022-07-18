@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFControls", "..\WPFContro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFStyles", "..\WPFStyles\WPFStyles\WPFStyles.csproj", "{60F7F327-8FCC-4F5C-9676-89CFF7589853}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectSubscribeWrapper", "..\ObjectSubscribeWrapper\ObjectSubscribeWrapper\ObjectSubscribeWrapper.csproj", "{3A397F19-9804-473D-9DAA-636411977306}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{60F7F327-8FCC-4F5C-9676-89CFF7589853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60F7F327-8FCC-4F5C-9676-89CFF7589853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60F7F327-8FCC-4F5C-9676-89CFF7589853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A397F19-9804-473D-9DAA-636411977306}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A397F19-9804-473D-9DAA-636411977306}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A397F19-9804-473D-9DAA-636411977306}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A397F19-9804-473D-9DAA-636411977306}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

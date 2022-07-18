@@ -19,6 +19,7 @@
     <ProjectReference Include="..\..\classInjector\ClassInjector\ClassInjector.csproj" />
     <ProjectReference Include="..\..\Controls\Controls\Controls.csproj" />
     <ProjectReference Include="..\..\JSONPacker\JSONPacker\JSONPacker.csproj" />
+    <ProjectReference Include="..\..\ObjectSubscribeWrapper\ObjectSubscribeWrapper\ObjectSubscribeWrapper.csproj" />
     <ProjectReference Include="..\..\WPFCommands\WPFCommands\WPFCommands.csproj" />
     <ProjectReference Include="..\..\WPFControls\Controls\WPFControls.csproj" />
     <ProjectReference Include="..\..\WPFStyles\WPFStyles\WPFStyles.csproj" />
